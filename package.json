@@ -1,6 +1,6 @@
 {
-  "name": "pickup-music-metronome",
-  "version": "1.0.36",
+  "name": "@pickupmusic/metronome",
+  "version": "1.0.2",
   "description": "Pickup Music - Metronome tool used to practice",
   "main": "dist/metronome.bundle.js",
   "module": "src/index.js",
@@ -21,5 +21,17 @@
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1",
     "webpack-merge": "^5.8.0"
-  }
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pickup-Music/metronome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pickup-Music/metronome/issues"
+  },
+  "homepage": "https://github.com/Pickup-Music/metronome#readme"
 }
