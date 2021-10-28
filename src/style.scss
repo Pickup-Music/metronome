@@ -1,0 +1,83 @@
+.metronome-root {
+  display: inline-flex;
+  flex-flow: wrap;
+  border: 1px solid black;
+  background-color: #eee;
+
+  .metronome-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(4px + 1%);
+
+    .metronome-header__logo {
+      height: calc(1.2vmax + 3%);
+      width: calc(2vmax + 9%);
+    }
+  }
+
+  .metronome-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(4px + 1%);
+
+    .metronome-counters {
+      width: 30%;
+
+      .metronome-counters__row {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        
+        .metronome-counters__tile {
+          display: table-cell;
+          border: 1px solid black;
+          background-color: #fff;
+          height: calc(10px + 1vmax);
+          width: calc(20px + 2vmax);
+        }
+      }
+    }
+
+    .metronome-bpm {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: calc(20px + 5vmax);
+
+      .metronome-bpm__text {
+        font-weight: bold;
+        font-size: calc(48px + 10%);
+      }
+      .metronome-bpm__caption {
+        text-align: center;
+        font-size: calc(20px + 10%);
+      }
+      .metronome-bpm__arrow {
+        height: calc(20px + 2vmax);
+        width: calc(20px + 2vmax);
+      }
+    }
+
+    .metronome-controllers {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: calc(10px + 2vmax);
+      width: 60%;
+      font-size: calc(20px + 10%);
+
+      .metronome-play {
+        .metronome-play__icon {
+          height: calc(20px + 2vmax);
+          width: calc(20px + 2vmax);
+        }
+      }
+    }
+  }
+}
