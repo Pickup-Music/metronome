@@ -1,0 +1,6 @@
+export default {
+  MIN_TEMPO: 20,
+  MAX_TEMPO: 400,
+  DEFAULT_TEMPO: 120,
+  BEEP_LENGTH: 0.1
+}

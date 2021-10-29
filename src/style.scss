@@ -34,6 +34,7 @@
         padding: 10px;
         
         .metronome-counters__tile {
+          cursor: pointer;
           display: table-cell;
           border: 1px solid black;
           background-color: #fff;
@@ -58,6 +59,7 @@
         font-size: calc(20px + 10%);
       }
       .metronome-bpm__arrow {
+        cursor: pointer;
         height: calc(20px + 2vmax);
         width: calc(20px + 2vmax);
       }
@@ -73,11 +75,24 @@
       font-size: calc(20px + 10%);
 
       .metronome-play {
+        cursor: pointer;
+
         .metronome-play__icon {
           height: calc(20px + 2vmax);
           width: calc(20px + 2vmax);
         }
       }
+    }
+
+    .metronome-subdivisions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: calc(10px + 2vmax);
+      width: 40%;
+      font-size: calc(20px + 10%);
+      cursor: pointer;
     }
   }
 }

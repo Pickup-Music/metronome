@@ -5,7 +5,7 @@ class DecBpmButton extends Button {
     super(options)
   }
 
-  onClick(e) {
+  onPressing(e) {
     this.metronome.decreaseBPM()
   }
 }

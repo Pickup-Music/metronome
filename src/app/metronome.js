@@ -1,9 +1,5 @@
 import Events from 'events'
-
-const MIN_TEMPO = 20
-const MAX_TEMPO = 400
-const DEFAULT_TEMPO = 120
-const BEEP_LENGTH = 0.1
+import constants from './constants'
 
 class Metronome extends Events {
   constructor() {
@@ -11,7 +7,7 @@ class Metronome extends Events {
 
     this.initialised = false
     this.playing = false
-    this.tempo = DEFAULT_TEMPO
+    this.tempo = constants.DEFAULT_TEMPO
   }
 
   _init() {
@@ -22,7 +18,7 @@ class Metronome extends Events {
       
       this.osc = new this.Tone.Oscillator().toDestination()
       this.Tone.Transport.scheduleRepeat((time) => {
-        this.osc.start(time).stop(time + BEEP_LENGTH)
+        this.osc.start(time).stop(time + constants.BEEP_LENGTH)
       }, "8n")
     }
   }
@@ -30,10 +26,10 @@ class Metronome extends Events {
   _updateTempo(tempo) {
     this._init()
 
-    this.tempo = Math.max(Math.min(tempo, MAX_TEMPO), MIN_TEMPO)
+    this.tempo = Math.max(Math.min(tempo, constants.MAX_TEMPO), constants.MIN_TEMPO)
     this.Tone.Transport.bpm.value = this.tempo
 
-    this.emit('tempo', { tempo })
+    this.emit('tempo', { tempo: this.tempo })
   }
 
   play() {

@@ -3,5 +3,6 @@ import play from './images/play.svg';
 
 export default {
   logo,
-  play
+  play,
+  noteChar: "🎵"
 }
