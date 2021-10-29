@@ -29,6 +29,7 @@ export function init(containerSelector) {
         parentEl: containerEl.querySelector(".metronome-root"),
         metronome
       }
+      console.log('[Pickup Music] Metronome tool - initializing components...')
       components.init(options)
     })
   } else {

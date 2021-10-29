@@ -6,6 +6,8 @@ class BPM extends BaseComponent {
   }
 
   init() {
+    super.init()
+
     this.el.innerHTML = this.metronome.tempo
     this.metronome.on('tempo', ({tempo}) => {
       this.el.innerHTML = tempo

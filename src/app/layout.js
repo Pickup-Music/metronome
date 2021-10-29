@@ -11,22 +11,13 @@ export default {
     <div class="metronome-container">
       <div class="metronome-counters">
         <div class="metronome-counters__row">
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
+        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) => `<div class="metronome-counters__tile"></div>`).join("") }
         </div>
         <div class="metronome-counters__row">
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
+        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) => `<div class="metronome-counters__tile"></div>`).join("") }
         </div>
         <div class="metronome-counters__row">
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
-          <div class="metronome-counters__tile"></div>
+        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) => `<div class="metronome-counters__tile"></div>`).join("") }
         </div>
       </div>
       <div class="metronome-bpm__background">
@@ -44,17 +35,25 @@ export default {
         </div>
       </div>
       <div class="metronome-controllers">
-        <div class="metronome-time-signature metronome-button">3/2</div>
+        <div class="metronome-time-signature metronome-button">
+          <select class="metronome-time-signature__num" data-num="0">
+            ${[...Array(12).keys()].map((i) => `<option value="${i+1}"${i+1 === constants.TIME_SIGN_DEFAULT_FIRST ? ' selected' : ''}>${i+1}</option>`).join("") }
+          </select>
+          /
+          <select class="metronome-time-signature__num" data-num="1">
+            ${[...Array(4).keys()].map((i) => `<option value="${i+1}"${i+1 === constants.TIME_SIGN_DEFAULT_SECOND ? ' selected' : ''}>${i+1}</option>`).join("") }
+          </select>
+        </div>
         <div class="metronome-play metronome-button">
           <img src="${resources.play}" class="metronome-play__icon" />
         </div>
         <div class="metronome-tap metronome-button">TAP</div>
       </div>
       <div class="metronome-subdivisions">
-        <div class="metronome-subdivision metronome-button">${resources.noteChar}</div>
-        <div class="metronome-subdivision metronome-button">${resources.noteChar}</div>
-        <div class="metronome-subdivision metronome-button">${resources.noteChar}</div>
-        <div class="metronome-subdivision metronome-button">${resources.noteChar}</div>
+        <div class="metronome-subdivision metronome-button" data-value="4n">${resources.noteChar}</div>
+        <div class="metronome-subdivision metronome-button" data-value="4n.">${resources.noteChar}</div>
+        <div class="metronome-subdivision metronome-button" data-value="8n">${resources.noteChar}</div>
+        <div class="metronome-subdivision metronome-button" data-value="8n.">${resources.noteChar}</div>
       </div>
     </div>
   </div>

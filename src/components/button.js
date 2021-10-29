@@ -7,6 +7,8 @@ class Button extends BaseComponent {
   }
 
   init() {
+    super.init()
+
     this.el.addEventListener('click', (e) => {
       e.preventDefault();
       this.onClick(e)

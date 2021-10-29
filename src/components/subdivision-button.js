@@ -6,7 +6,7 @@ class SubDivisionButton extends Button {
   }
 
   onClick(e) {
-    // this.metronome.play()
+    this.metronome.setSubdivision(this.data.value)
   }
 }
 
