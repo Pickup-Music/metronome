@@ -35,6 +35,7 @@ class Button extends BaseComponent {
 
   startPressing(e) {
     this.pressing = true
+    this.onPressing(e)
     this.emitOnPress(e, 0)
   }
 
