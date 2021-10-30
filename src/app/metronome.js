@@ -62,7 +62,19 @@ class Metronome extends Events {
       this.osc.dispose()
     }
     this.osc = new this.Tone.Oscillator().toDestination()
+    this.currentTime = 0
     this.eventId = this.Tone.Transport.scheduleRepeat((time) => {
+      console.log('before', this.osc.volume.value)
+      this.osc.volume.value--
+      console.log('after', this.osc.volume.value)
+      const t = this.currentTime % this.counters
+      if (t === 0) {
+        this.osc.frequency.setValueAtTime(880, time)
+      } else {
+        this.osc.frequency.setValueAtTime(440, time)
+      }
+      this.currentTime++
+
       this.osc.start(time).stop(time + constants.BEEP_LENGTH)
     }, this.subdivision)
   }
