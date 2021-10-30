@@ -11,13 +11,19 @@ export default {
     <div class="metronome-container">
       <div class="metronome-counters">
         <div class="metronome-counters__row">
-        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) => `<div class="metronome-counters__tile"></div>`).join("") }
+        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) =>
+          `<div class="metronome-counters__tile" data-pos="${i}"></div>`
+          ).join("") }
         </div>
         <div class="metronome-counters__row">
-        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) => `<div class="metronome-counters__tile"></div>`).join("") }
+        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) =>
+          `<div class="metronome-counters__tile" data-pos="${i}"></div>`
+          ).join("") }
         </div>
         <div class="metronome-counters__row">
-        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) => `<div class="metronome-counters__tile"></div>`).join("") }
+        ${[...Array(constants.TIME_SIGN_DEFAULT_FIRST).keys()].map((i) =>
+          `<div class="metronome-counters__tile" data-pos="${i}"></div>`
+          ).join("") }
         </div>
       </div>
       <div class="metronome-bpm__background">

@@ -9,5 +9,13 @@ export default {
         component.init()
       })
     })
+  },
+
+  initComponent: ({ componentSelector, parentEl, metronome }) => {
+    parentEl.querySelectorAll(componentSelector).forEach((rootEl) => {
+      const componentClass = schema[componentSelector]
+      const component = new componentClass({ rootEl, metronome })
+      component.init()
+    })
   }
 }

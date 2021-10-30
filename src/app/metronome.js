@@ -8,11 +8,13 @@ class Metronome extends Events {
     this.initialised = false
     this.playing = false
     this.tempo = constants.DEFAULT_TEMPO
-    this.counters = constants.TIME_SIGN_DEFAULT_FIRST
-    this.timeSignature = [constants.TIME_SIGN_DEFAULT_FIRST, constants.TIME_SIGN_DEFAULT_SECOND]
+    this.counters = null
     this.subdivision = constants.DEFAULT_SUBDIVISION
     this.taps = []
     this.tapTimeout = null
+    this.timeSignature = [constants.TIME_SIGN_DEFAULT_FIRST, constants.TIME_SIGN_DEFAULT_SECOND]
+    
+    this._updateCounters()
   }
 
   _init() {
@@ -50,33 +52,72 @@ class Metronome extends Events {
     this.Tone.Transport.timeSignature = this.timeSignature
 
     if (num === 0) {
-      this.counters = this.timeSignature[0]
-      this.emit('counters')
+      this._updateCounters()
     }
 
     this.restart()
+  }
+
+  _updateCounters(diffs) {
+    const numCounters = this.timeSignature[0]
+    // init counters
+    if (!this.counters || !this.counters.length) {
+      this.counters = [...Array(numCounters).keys()].map((c) => c ? 2 : 3)
+    }
+    // change amount of counters
+    if (this.counters.length < numCounters) {
+      this.counters.push(...[...Array(numCounters - this.counters.length).keys()].map((c) => 2))
+    } else if (this.counters.length > numCounters) {
+      this.counters.splice(numCounters, this.counters.length - numCounters)
+    }
+    // update from diffs
+    if (diffs && diffs.length) {
+      diffs.forEach((pos) => {
+        if (pos >= 0 && pos < numCounters) {
+          this.counters[pos] = this.counters[pos] < 3 ? this.counters[pos] + 1 : 0
+        }
+      })
+    }
+    this.emit('counters')
   }
 
   _setScheduler() {
     if (this.osc) {
       this.osc.dispose()
     }
-    this.osc = new this.Tone.Oscillator().toDestination()
+    this.osc = new this.Tone.Oscillator(440).toDestination()
+    this.osc.volume.value = 0
     this.currentTime = 0
     this.eventId = this.Tone.Transport.scheduleRepeat((time) => {
-      console.log('before', this.osc.volume.value)
-      this.osc.volume.value--
-      console.log('after', this.osc.volume.value)
-      const t = this.currentTime % this.counters
-      if (t === 0) {
+      if (this.counters[this.currentTime] === 3) {
+        this.osc.volume.setValueAtTime(0, time)
         this.osc.frequency.setValueAtTime(880, time)
       } else {
+        switch(this.counters[this.currentTime]) {
+          case 0: this.osc.volume.setValueAtTime(-50, time)
+            break
+          case 1: this.osc.volume.setValueAtTime(-25, time)
+            break
+          case 2: this.osc.volume.setValueAtTime(0, time)
+            break
+        }
         this.osc.frequency.setValueAtTime(440, time)
       }
-      this.currentTime++
+
+      console.log('f: ', this.osc.frequency.value, 'v: ', this.osc.volume.value, 'c: ', this.currentTime, 'counters: ', this.counters)
 
       this.osc.start(time).stop(time + constants.BEEP_LENGTH)
+
+      // advance current time
+      this.currentTime++
+      if (this.currentTime >= this.counters.length) {
+        this.currentTime = 0
+      }
     }, this.subdivision)
+  }
+
+  setCounterPos(pos) {
+    this._updateCounters([pos])
   }
 
   tap() {
