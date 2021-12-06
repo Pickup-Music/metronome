@@ -1,4 +1,4 @@
-import Button from './button'
+import Button from './controls/button'
 
 class CounterButton extends Button {
   constructor(options) {
@@ -6,7 +6,7 @@ class CounterButton extends Button {
   }
 
   onClick(e) {
-    this.metronome.setCounterPos(parseInt(this.data.pos))
+    this.metronome.setCounterPos(parseInt(this.el.dataset.pos))
   }
 }
 

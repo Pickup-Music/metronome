@@ -14,21 +14,21 @@ class Metronome extends Events {
     this.tapTimeout = null
     this.timeSignature = [constants.TIME_SIGN_DEFAULT_FIRST, constants.TIME_SIGN_DEFAULT_SECOND]
     
-    this._updateCounters()
+    this.#updateCounters()
   }
 
-  _init() {
+  #init() {
     if (!this.initialised) {
       this.initialised = true
 
       this.Tone = require('tone')
       
-      this._setScheduler()
+      this.#setScheduler()
     }
   }
 
-  _updateTempo(tempo) {
-    this._init()
+  #updateTempo(tempo) {
+    this.#init()
 
     this.tempo = Math.max(Math.min(tempo, constants.MAX_TEMPO), constants.MIN_TEMPO)
     this.Tone.Transport.bpm.value = this.tempo
@@ -36,29 +36,27 @@ class Metronome extends Events {
     this.emit('tempo', { tempo: this.tempo })
   }
 
-  _updateSubdivision(value) {
-    this._init()
-    
+  #updateSubdivision(value) {
     this.subdivision = value
 
     this.emit('subdivision', { subdivision: this.subdivision })
     this.restart()
   }
 
-  _updateTimeSignatureNum(num, value) {
-    this._init()
+  #updateTimeSignatureNum(num, value) {
+    this.#init()
 
     this.timeSignature[num] = parseInt(value)
     this.Tone.Transport.timeSignature = this.timeSignature
 
     if (num === 0) {
-      this._updateCounters()
+      this.#updateCounters()
     }
 
     this.restart()
   }
 
-  _updateCounters(diffs) {
+  #updateCounters(diffs) {
     const numCounters = this.timeSignature[0]
     // init counters
     if (!this.counters || !this.counters.length) {
@@ -81,7 +79,7 @@ class Metronome extends Events {
     this.emit('counters')
   }
 
-  _setScheduler() {
+  #setScheduler() {
     if (this.osc) {
       this.osc.dispose()
     }
@@ -104,8 +102,6 @@ class Metronome extends Events {
         this.osc.frequency.setValueAtTime(440, time)
       }
 
-      console.log('f: ', this.osc.frequency.value, 'v: ', this.osc.volume.value, 'c: ', this.currentTime, 'counters: ', this.counters)
-
       this.osc.start(time).stop(time + constants.BEEP_LENGTH)
 
       // advance current time
@@ -117,7 +113,7 @@ class Metronome extends Events {
   }
 
   setCounterPos(pos) {
-    this._updateCounters([pos])
+    this.#updateCounters([pos])
   }
 
   tap() {
@@ -136,7 +132,7 @@ class Metronome extends Events {
         return sum + diff
       }, 0) / (this.taps.length - 1)
       const bpm = Math.floor((60 * 1000) / avgTimeInMilliseconds)
-      this._updateTempo(bpm)
+      this.#updateTempo(bpm)
       this.emit('cleartap')
     } else {
       this.emit('keeptapping')
@@ -149,7 +145,7 @@ class Metronome extends Events {
   }
 
   play() {
-    this._init()
+    this.#init()
 
     if (this.playing) {
       this.Tone.Transport.stop()
@@ -161,28 +157,32 @@ class Metronome extends Events {
   }
 
   restart() {
-    this._init()
+    this.#init()
     this.Tone.Transport.stop()
     this.Tone.Transport.clear(this.eventId)
-    this._setScheduler()
+    this.#setScheduler()
     this.Tone.Transport.start()
     this.playing = true
   }
 
   increaseBPM() {
-    this._updateTempo(this.tempo + 1)
+    this.#updateTempo(this.tempo + 1)
   }
 
   decreaseBPM() {
-    this._updateTempo(this.tempo - 1)
+    this.#updateTempo(this.tempo - 1)
+  }
+  
+  setBPM(value) {
+    this.#updateTempo(value || this.tempo)
   }
 
   setSubdivision(value) {
-    this._updateSubdivision(value)
+    this.#updateSubdivision(value)
   }
 
   setTimeSignatureNum(num, value) {
-    this._updateTimeSignatureNum(num, value)
+    this.#updateTimeSignatureNum(num, value)
   }
 }
 

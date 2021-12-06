@@ -1,4 +1,4 @@
-import Button from './button'
+import Button from './controls/button'
 
 class TapButton extends Button {
   constructor(options) {

@@ -1,4 +1,4 @@
-import Button from './button'
+import Button from './controls/button'
 
 class IncBpmButton extends Button {
   constructor(options) {

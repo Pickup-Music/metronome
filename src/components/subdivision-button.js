@@ -1,4 +1,4 @@
-import Button from './button'
+import Button from './controls/button'
 
 class SubDivisionButton extends Button {
   constructor(options) {
@@ -6,7 +6,7 @@ class SubDivisionButton extends Button {
   }
 
   onClick(e) {
-    this.metronome.setSubdivision(this.data.value)
+    this.metronome.setSubdivision(this.el.dataset.value)
   }
 }
 

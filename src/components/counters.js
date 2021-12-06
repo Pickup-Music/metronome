@@ -1,4 +1,4 @@
-import BaseComponent from './base-component'
+import BaseComponent from './controls/base-component'
 import Components from './index'
 
 class Counters extends BaseComponent {

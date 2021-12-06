@@ -17,11 +17,11 @@ export function init(containerSelector) {
     }
     
     // instantiate root UI element
-    const rootEl = document.createElement("div")
-    containerEl.appendChild(rootEl)
-
+    const rootEl = document.createElement("template")
     // sets dummy layout
-    rootEl.outerHTML = layout.main
+    rootEl.innerHTML = layout.main
+
+    containerEl.appendChild(rootEl.content)
 
     // init components
     window.addEventListener('load', () => {

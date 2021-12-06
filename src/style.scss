@@ -1,162 +1,232 @@
+// default theme
+$primary-color: #e5e5e5;
+$secondary-color: #f0f0f0;
+$background-color: #f0f0f0;
+$text-color: #333;
+$shadow-first-color: #ccc;
+$shadow-second-color: #fff;
+
+// light theme
+$primary-color-light: #f6f1ef;
+$secondary-color-light: #fffaf8;
+$background-color-light: #fffaf8;
+$text-color-light: #333;
+$shadow-first-color-light: #ccc;
+$shadow-second-color-light: #fff;
+
+// dark theme
+$primary-color-dark: #888;
+$secondary-color-dark: #353535;
+$background-color-dark: #424242;
+$text-color-dark: #fff;
+$shadow-first-color-dark: #393939;
+$shadow-second-color-dark: #595959;
+
+// wave theme
+$primary-color-wave: #ebf0f2;
+$secondary-color-wave: #f4f9fb;
+$background-color-wave: #f4f9fb;
+$text-color-wave: #333;
+$shadow-first-color-wave: #ccc;
+$shadow-second-color-wave: #fff;
+
 .metronome-root {
-  display: inline-flex;
-  flex-flow: wrap;
-  border: 1px solid black;
-  background-color: #eee;
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  color: #111;
+  display: block;
+  position: relative;
+  flex-flow: column;
+  background-color: $background-color;
+  font-family: Roboto, 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  color: $text-color;
+  border-radius: 12px;
+  box-shadow: 3px 3px 5px #ccc, -3px -3px 5px #fff;
+  width:40vh;
+  min-width: 320px;
+  max-width: 400px;
+  height: 80vh;
+  min-height: 640px;
+  max-height: 800px;
 
   .metronome-header {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: calc(4px + 1%);
+    padding: 10% 0 5%;
 
     .metronome-header__logo {
-      height: calc(1.2vmax + 3%);
-      width: calc(2vmax + 9%);
+      height: 40%;
+      width: 40%;
+    }
+
+    .metronome-theme {
+      cursor: pointer;
+      border-radius: 50%;
+      min-width: 2vh;
+      min-height: 2vh;
+      position: absolute;
+      right: 10%;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .metronome-theme__icon {
+        display: none;
+        &.metronome-theme__icon--default {
+          display: block;
+        }
+      }
     }
   }
 
   .metronome-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: calc(4px + 1%);
+    display: block;
 
     .metronome-counters {
-      width: 100%;
+      padding: 5% 10%;
 
       .metronome-counters__row {
         display: flex;
         justify-content: center;
-        padding: 10px;
         
         .metronome-counters__tile {
           cursor: pointer;
+          background-color: $secondary-color;
           display: table-cell;
-          margin: 0 calc(10px + 1vmax);
-          border: 1px solid #222;
-          border-radius: 4px;
-          background-color: #fff;
-          height: calc(10px + 1vmax);
-          width: calc(20px + 2vmax);
-          box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px,
-                      rgb(0 0 0 / 14%) 0px 2px 2px 0px,
-                      rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+          margin: calc(0.5vh + 2px);
+          border-radius: 2px;
+          height: calc(10px + 1vh);
+          width: calc(20px + 2vh);
+          box-shadow: 3px 3px 5px $shadow-first-color, -3px -3px 5px $shadow-second-color;
 
           &.metronome-counters__tile--checked {
-            background-color: #aaa;
+            background-color: $primary-color;
           }
         }
       }
     }
 
     .metronome-bpm__background {
-      border: 2px solid #000;
-      border-radius: 50%;
-      margin: calc(10px + 2vmax) calc(20px + 4vmax);
-      background-color: #fff;
-      box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px,
-                  rgb(0 0 0 / 14%) 0px 2px 2px 0px,
-                  rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+      margin: 5% 10% 10%;
 
       .metronome-bpm {
         display: flex;
+        background-color: $secondary-color;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-        margin: 10px;
-        min-width: calc(200px + 2vmax);
-        min-height: calc(200px + 2vmax);
-        border: 2px solid #000;
+        justify-content: space-around;
+        justify-self: center;
+        margin: 5% auto;
+        width: calc(20vh + 50px);
+        height: calc(20vh + 50px);
         border-radius: 50%;
-        background-color: #aaa;
+        box-shadow: 3px 3px 5px $shadow-first-color, -3px -3px 5px $shadow-second-color;
 
         .metronome-bpm__content {
           display: flex;
           flex-direction: column;
-          min-width: calc(40px + 4vmax);
+          min-width: calc(40px + 4vh);
           align-items: center;
 
           .metronome-bpm__text {
-            font-weight: bold;
-            font-size: calc(48px + 10%);
+            display: inline;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            text-align: center;
+            min-width: 80px;
+            max-width: 10vh;
+            font-size: calc(14px + 4vh);
           }
           .metronome-bpm__caption {
             text-align: center;
-            font-size: calc(20px + 10%);
+            font-size: calc(12px + 1vh);
           }
         }
         .metronome-bpm__arrow {
           cursor: pointer;
-          height: calc(20px + 2vmax);
-          width: calc(20px + 2vmax);
+          width: calc(20px + 2vh);
         }
       }
     }
+    .metronome-controllers-background {
+      padding: 10% 10% 5%;
 
-    .metronome-controllers {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      margin: calc(5px + 1vmax) calc(10px + 2vmax);
-      width: 60%;
-      font-size: calc(20px + 10%);
-
-      .metronome-time-signature {
-        cursor: pointer;
+      .metronome-controllers {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        min-width: 15%;
+        margin: auto;
+        font-size: calc(12px + 1vh);
 
-        .metronome-time-signature__num {
-          -webkit-appearance: none;
-          background-color: transparent;
-          border: none;
-          outline: none;
-          margin: 2px 4px;
-          min-width: calc(20px + 1vmax);
-          text-align: center;
+        .metronome-time-signature {
+          cursor: pointer;
+          background-color: $secondary-color;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          min-width: 5vh;
+          border-radius: 10px;
 
-          &::-ms-expand {
-            display: none;
+          .metronome-time-signature__num {
+            -webkit-appearance: none;
+            background-color: transparent;
+            color: $text-color;
+            border: none;
+            outline: none;
+            margin: 2px 4px;
+            text-align: center;
+
+            &::-ms-expand {
+              display: none;
+            }
           }
         }
-      }
 
-      .metronome-play {
-        cursor: pointer;
-        border-radius: 50%;
-        margin: auto;
+        .metronome-play {
+          cursor: pointer;
+          background-color: $secondary-color;
+          border-radius: 50%;
+          min-width: 5vh;
+          min-height: 5vh;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
 
-        .metronome-play__icon {
-          height: calc(20px + 2vmax);
-          width: calc(20px + 1vmax);
+          .metronome-play__icon {
+            fill: $text-color;
+            margin-left: 10px;
+          }
         }
-      }
 
-      .metronome-tap {
-        min-width: 15%;
-        text-align: center;
+        .metronome-tap {
+          background-color: $secondary-color;
+          min-width: 5vh;
+          text-align: center;
+          border-radius: 10px;
+        }
       }
     }
 
     .metronome-subdivisions {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
-      margin: calc(5px + 1vmax) calc(10px + 2vmax);
-      width: 40%;
+      margin: 10% auto;
+      max-width: 80%;
       font-size: calc(20px + 10%);
       cursor: pointer;
+
+      .metronome-subdivision {
+        background-color: $secondary-color;
+        border-radius: 10px;
+      }
     }
   }
 
@@ -169,17 +239,192 @@
                 box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
                 border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
                 color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    color: rgba(0, 0, 0, 0.87);
-    background-color: #ccc;
-    box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px,
-                rgb(0 0 0 / 14%) 0px 2px 2px 0px,
-                rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+    color: $text-color;
+    box-shadow: 3px 3px 5px $shadow-first-color, -3px -3px 5px $shadow-second-color;
 
     &:hover {
-      background-color: #aaa;
-      box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px,
-                  rgb(0 0 0 / 14%) 0px 4px 5px 0px,
-                  rgb(0 0 0 / 12%) 0px 1px 10px 0px;
+      background-color: $secondary-color;
+      box-shadow: 1px 1px 2px $shadow-first-color, -1px -1px 2px $shadow-second-color;
+    }
+  }
+
+  &.theme-light {
+    background-color: $background-color-light;
+    color: $text-color-light;
+    .metronome-header {
+      .metronome-theme {
+        .metronome-theme__icon--default {
+          display: none;
+        }
+        .metronome-theme__icon--light {
+          display: block;
+        }
+      }
+    }
+    .metronome-container {
+      .metronome-counters {
+        .metronome-counters__tile {
+          background-color: $secondary-color-light;
+          box-shadow: 3px 3px 5px $shadow-first-color-light, -3px -3px 5px $shadow-second-color-light;
+          &.metronome-counters__tile--checked {
+            background-color: $primary-color-light;
+          }
+        }
+      }
+      .metronome-bpm {
+        background-color: $secondary-color-light;
+        box-shadow: 3px 3px 5px $shadow-first-color-light, -3px -3px 5px $shadow-second-color-light;
+      }
+      .metronome-controllers {
+        .metronome-time-signature {
+          background-color: $secondary-color-light;
+          .metronome-time-signature__num {
+            color: $text-color-light;
+          }
+        }
+        .metronome-play {
+          background-color: $secondary-color-light;
+          .metronome-play__icon .metronome-play__icon-path {
+            fill: $text-color-light;
+          }
+        }
+        .metronome-tap {
+          background-color: $secondary-color-light;
+        }
+      }
+    }
+    .metronome-subdivisions {
+      .metronome-subdivision {
+        background-color: $secondary-color-light;
+      }
+    }
+    .metronome-button {
+      color: $text-color-light;
+      box-shadow: 3px 3px 5px $shadow-first-color-light, -3px -3px 5px $shadow-second-color-light;
+      &:hover {
+        background-color: $secondary-color-light;
+        box-shadow: 1px 1px 2px $shadow-first-color-light, -1px -1px 2px $shadow-second-color-light;
+      }
+    }
+  }
+
+  &.theme-dark {
+    background-color: $background-color-dark;
+    color: $text-color-dark;
+    .metronome-header {
+      .metronome-theme {
+        .metronome-theme__icon--default {
+          display: none;
+        }
+        .metronome-theme__icon--dark {
+          display: block;
+        }
+      }
+    }
+    .metronome-container {
+      .metronome-counters {
+        .metronome-counters__tile {
+          background-color: $secondary-color-dark;
+          box-shadow: 3px 3px 5px $shadow-first-color-dark, -3px -3px 5px $shadow-second-color-dark;
+          &.metronome-counters__tile--checked {
+            background-color: $primary-color-dark;
+          }
+        }
+      }
+      .metronome-bpm {
+        background-color: $secondary-color-dark;
+        box-shadow: 3px 3px 5px $shadow-first-color-dark, -3px -3px 5px $shadow-second-color-dark;
+      }
+      .metronome-controllers {
+        .metronome-time-signature {
+          background-color: $secondary-color-dark;
+          .metronome-time-signature__num {
+            color: $text-color-dark;
+          }
+        }
+        .metronome-play {
+          background-color: $secondary-color-dark;
+          .metronome-play__icon .metronome-play__icon-path {
+            fill: $text-color-dark;
+          }
+        }
+        .metronome-tap {
+          background-color: $secondary-color-dark;
+        }
+      }
+    }
+    .metronome-subdivisions {
+      .metronome-subdivision {
+        background-color: $secondary-color-dark;
+      }
+    }
+    .metronome-button {
+      color: $text-color-dark;
+      box-shadow: 3px 3px 5px $shadow-first-color-dark, -3px -3px 5px $shadow-second-color-dark;
+      &:hover {
+        background-color: $secondary-color-dark;
+        box-shadow: 1px 1px 2px $shadow-first-color-dark, -1px -1px 2px $shadow-second-color-dark;
+      }
+    }
+  }
+
+  &.theme-wave {
+    background-color: $background-color-wave;
+    color: $text-color-wave;
+    .metronome-header {
+      .metronome-theme {
+        .metronome-theme__icon--default {
+          display: none;
+        }
+        .metronome-theme__icon--wave {
+          display: block;
+        }
+      }
+    }
+    .metronome-container {
+      .metronome-counters {
+        .metronome-counters__tile {
+          background-color: $secondary-color-wave;
+          box-shadow: 3px 3px 5px $shadow-first-color-wave, -3px -3px 5px $shadow-second-color-wave;
+          &.metronome-counters__tile--checked {
+            background-color: $primary-color-wave;
+          }
+        }
+      }
+      .metronome-bpm {
+        background-color: $secondary-color-wave;
+        box-shadow: 3px 3px 5px $shadow-first-color-wave, -3px -3px 5px $shadow-second-color-wave;
+      }
+      .metronome-controllers {
+        .metronome-time-signature {
+          background-color: $secondary-color-wave;
+          .metronome-time-signature__num {
+            color: $text-color-wave;
+          }
+        }
+        .metronome-play {
+          background-color: $secondary-color-wave;
+          .metronome-play__icon .metronome-play__icon-path {
+            fill: $text-color-wave;
+          }
+        }
+        .metronome-tap {
+          background-color: $secondary-color-wave;
+        }
+      }
+    }
+    .metronome-subdivisions {
+      .metronome-subdivision {
+        background-color: $secondary-color-wave;
+      }
+    }
+    .metronome-button {
+      color: $text-color-wave;
+      box-shadow: 3px 3px 5px $shadow-first-color-wave, -3px -3px 5px $shadow-second-color-wave;
+      &:hover {
+        background-color: $secondary-color-wave;
+        box-shadow: 1px 1px 2px $shadow-first-color-wave, -1px -1px 2px $shadow-second-color-wave;
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-import List from './list'
+import List from './controls/list'
 
 class TimeSignatureList extends List {
   constructor(options) {
@@ -6,7 +6,7 @@ class TimeSignatureList extends List {
   }
 
   onChange(e) {
-    this.metronome.setTimeSignatureNum(parseInt(this.data.num), this.value)
+    this.metronome.setTimeSignatureNum(parseInt(this.el.dataset.num), this.value)
   }
 }
 
