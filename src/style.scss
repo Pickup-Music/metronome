@@ -138,6 +138,7 @@ $shadow-second-color-wave: #fff;
             min-width: 80px;
             max-width: 10vh;
             font-size: calc(14px + 4vh);
+            color: $text-color;
           }
           .metronome-bpm__caption {
             text-align: center;
@@ -274,6 +275,11 @@ $shadow-second-color-wave: #fff;
       .metronome-bpm {
         background-color: $secondary-color-light;
         box-shadow: 3px 3px 5px $shadow-first-color-light, -3px -3px 5px $shadow-second-color-light;
+        .metronome-bpm__content {
+          .metronome-bpm__text {
+            color: $text-color-light;
+          }
+        }
       }
       .metronome-controllers {
         .metronome-time-signature {
@@ -334,6 +340,11 @@ $shadow-second-color-wave: #fff;
       .metronome-bpm {
         background-color: $secondary-color-dark;
         box-shadow: 3px 3px 5px $shadow-first-color-dark, -3px -3px 5px $shadow-second-color-dark;
+        .metronome-bpm__content {
+          .metronome-bpm__text {
+            color: $text-color-dark;
+          }
+        }
       }
       .metronome-controllers {
         .metronome-time-signature {
@@ -394,6 +405,11 @@ $shadow-second-color-wave: #fff;
       .metronome-bpm {
         background-color: $secondary-color-wave;
         box-shadow: 3px 3px 5px $shadow-first-color-wave, -3px -3px 5px $shadow-second-color-wave;
+        .metronome-bpm__content {
+          .metronome-bpm__text {
+            color: $text-color-wave;
+          }
+        }
       }
       .metronome-controllers {
         .metronome-time-signature {
