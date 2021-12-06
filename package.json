@@ -19,8 +19,6 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.5.0",
-    "favicons": "^6.2.2",
-    "favicons-webpack-plugin": "^5.0.2",
     "file-loader": "^6.2.0",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",

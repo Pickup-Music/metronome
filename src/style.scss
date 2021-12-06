@@ -56,6 +56,11 @@ $shadow-second-color-wave: #fff;
     .metronome-header__logo {
       height: 40%;
       width: 40%;
+      display: none;
+
+      &:not(.metronome-header__logo--dark) {
+        display: block;
+      }
     }
 
     .metronome-theme {
@@ -227,6 +232,17 @@ $shadow-second-color-wave: #fff;
       .metronome-subdivision {
         background-color: $secondary-color;
         border-radius: 10px;
+        padding: 1vh;
+        
+        .metronome-subdivision__icon {
+          width: 2vh;
+          height: 2vh;
+          display: none;
+
+          &:not(.metronome-subdivision__icon--dark) {
+            display: block;
+          }
+        }
       }
     }
   }
@@ -318,6 +334,14 @@ $shadow-second-color-wave: #fff;
     background-color: $background-color-dark;
     color: $text-color-dark;
     .metronome-header {
+      .metronome-header__logo {
+        &.metronome-header__logo--dark {
+          display: block;
+        }
+        &:not(.metronome-header__logo--dark) {
+          display: none;
+        }
+      }
       .metronome-theme {
         .metronome-theme__icon--default {
           display: none;
@@ -345,6 +369,11 @@ $shadow-second-color-wave: #fff;
             color: $text-color-dark;
           }
         }
+        .metronome-bpm__arrow {
+          svg path {
+            fill: $text-color-dark;
+          }
+        }
       }
       .metronome-controllers {
         .metronome-time-signature {
@@ -367,6 +396,14 @@ $shadow-second-color-wave: #fff;
     .metronome-subdivisions {
       .metronome-subdivision {
         background-color: $secondary-color-dark;
+        .metronome-subdivision__icon {
+          &.metronome-subdivision__icon--dark {
+            display: block;
+          }
+          &:not(.metronome-subdivision__icon--dark) {
+            display: none;
+          }
+        }
       }
     }
     .metronome-button {

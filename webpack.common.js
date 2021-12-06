@@ -1,5 +1,4 @@
 const path = require('path')
-const faviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -34,8 +33,5 @@ module.exports = {
         ],
       },
     ],
-  },
-  plugins: [
-    new faviconsWebpackPlugin()
-  ]
+  }
 };
