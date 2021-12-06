@@ -12,10 +12,10 @@ jobs:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
           scope: '@pickupmusic'
-      - run: npm ci
       - run: git switch -c master
       - run: git config --global user.email "fabiosdcouto@gmail.com"
       - run: git config --global user.name "GitHub CI"
+      - run: npm ci
       - run: npm version patch -m "[RELEASE] v%s"
       - run: git push https://${{secrets.GH_TOKEN}}@github.com/Pickup-Music/metronome
       - run: npm run deploy
