@@ -75,19 +75,19 @@ export default {
         </div>
       </div>
       <div class="metronome-subdivisions">
-        <div class="metronome-subdivision metronome-button" data-value="4n">
-          <img src="${resources.note}" class="metronome-subdivision__icon" />
-          <img src="${resources.noteDark}" class="metronome-subdivision__icon metronome-subdivision__icon--dark" />
-        </div>
         <div class="metronome-subdivision metronome-button" data-value="4n.">
           <img src="${resources.note}" class="metronome-subdivision__icon" />
           <img src="${resources.noteDark}" class="metronome-subdivision__icon metronome-subdivision__icon--dark" />
         </div>
-        <div class="metronome-subdivision metronome-button" data-value="8n">
+        <div class="metronome-subdivision metronome-button" data-value="4n">
           <img src="${resources.note}" class="metronome-subdivision__icon" />
           <img src="${resources.noteDark}" class="metronome-subdivision__icon metronome-subdivision__icon--dark" />
         </div>
         <div class="metronome-subdivision metronome-button" data-value="8n.">
+          <img src="${resources.note}" class="metronome-subdivision__icon" />
+          <img src="${resources.noteDark}" class="metronome-subdivision__icon metronome-subdivision__icon--dark" />
+        </div>
+        <div class="metronome-subdivision metronome-button" data-value="8n">
           <img src="${resources.note}" class="metronome-subdivision__icon" />
           <img src="${resources.noteDark}" class="metronome-subdivision__icon metronome-subdivision__icon--dark" />
         </div>
