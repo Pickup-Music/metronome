@@ -304,14 +304,39 @@ $mobile: 767px;
   }
 
   .metronome-loading-banner {
-    visibility: hidden;
+    display: none;
     position: absolute;
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 100%;
     top: 0;
+
+    .metronome-loading-banner__row {
+      display: flex;
+      justify-content: center;
+
+      .metronome-loading-banner__tile {
+        cursor: pointer;
+        background-color: $secondary-background-color;
+        display: table-cell;
+        margin: 4px;
+        border-radius: 2px;
+        height: 20px;
+        width: 40px;
+        box-shadow: 3px 3px 5px $shadow-first-color, -3px -3px 5px $shadow-second-color;
+        animation: monotrone-loading-animation 0.9s linear infinite;
+
+        &:nth-child(2) {
+          animation-delay: -0.3s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: -0.6s;
+        }
+      }
+    }
   }
 
   &.playing {
@@ -330,14 +355,14 @@ $mobile: 767px;
   &.metronome-loading-state {
     .metronome-header {
       .metronome-theme {
-        visibility: hidden;
+        display: hidden;
       }
     }
     .metronome-container {
       visibility: hidden;
     }
     .metronome-loading-banner {
-      visibility: visible;
+      display: flex;
     }
   }
 
@@ -580,5 +605,14 @@ $mobile: 767px;
         }
       }
     }
+  }
+}
+
+@keyframes monotrone-loading-animation {
+  0%, 100% {
+    background-color: $secondary-background-color;
+  }
+  50% {
+    background-color: $primary-color;
   }
 }

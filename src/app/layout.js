@@ -100,7 +100,23 @@ export default {
         </div>
       </div>
     </div>
-    <div class="metronome-loading-banner">Loading...</div>
+    <div class="metronome-loading-banner">
+      <div class="metronome-loading-banner__row">
+        <div class="metronome-loading-banner__tile metronome-loading-banner__tile--checked" data-pos="0"></div>
+        <div class="metronome-loading-banner__tile" data-pos="1"></div>
+        <div class="metronome-loading-banner__tile" data-pos="2"></div>
+      </div>
+      <div class="metronome-loading-banner__row">
+        <div class="metronome-loading-banner__tile metronome-loading-banner__tile--checked" data-pos="0"></div>
+        <div class="metronome-loading-banner__tile metronome-loading-banner__tile--checked" data-pos="1"></div>
+        <div class="metronome-loading-banner__tile metronome-loading-banner__tile--checked" data-pos="2"></div>
+      </div>
+      <div class="metronome-loading-banner__row">
+        <div class="metronome-loading-banner__tile metronome-loading-banner__tile--checked" data-pos="0"></div>
+        <div class="metronome-loading-banner__tile metronome-loading-banner__tile--checked" data-pos="1"></div>
+        <div class="metronome-loading-banner__tile metronome-loading-banner__tile--checked" data-pos="2"></div>
+      </div>
+    </div>
   </div>
   `
 }
