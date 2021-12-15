@@ -4,24 +4,40 @@ import Components from './index'
 class Counters extends BaseComponent {
   constructor(options) {
     super(options)
+
+    this.currentTime = -1
+    this.playing = false
   }
 
   init() {
     super.init()
 
-    this.el.innerHTML = this.renderCounters()
+    this.renderCounters()
     this.metronome.on('counters', () => {
-      this.el.innerHTML = this.renderCounters()
+      this.renderCounters()
       Components.initComponent({
         componentSelector: '.metronome-counters__tile',
         parentEl: this.el,
         metronome: this.metronome
       })
     })
+    this.metronome.on('time', ({ time }) => {
+      if (this.playing) {
+        this.currentTime = time
+        this.renderTime()
+      }
+    })
+    this.metronome.on('start', () => {
+      this.playing = true
+    })
+    this.metronome.on('stop', () => {
+      this.playing = false
+      this.clearTime()
+    })
   }
 
   renderCounters() {
-    return `
+    this.el.innerHTML = `
       <div class="metronome-counters__row">
       ${[...Array(this.metronome.counters.length).keys()].map((i) =>
         `<div
@@ -47,6 +63,27 @@ class Counters extends BaseComponent {
         ).join("") }
       </div>
     `
+    this.renderTime()
+  }
+
+  renderTime() {
+    this.clearTime()
+    if (this.playing) {
+      this.el.querySelectorAll('.metronome-counters__row').forEach((rowEl) => {
+        const currentTime = this.currentTime
+        rowEl.querySelectorAll('.metronome-counters__tile').forEach((colEl, i) => {
+          if (i == currentTime) {
+            colEl.classList.add('metronome-counters__col--highlighted')
+          }
+        })
+      })
+    }
+  }
+
+  clearTime() {
+    this.el.querySelectorAll('.metronome-counters__col--highlighted').forEach((colEl) => {
+      colEl.classList.remove('metronome-counters__col--highlighted')
+    })
   }
 }
 

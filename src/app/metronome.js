@@ -103,6 +103,7 @@ class Metronome extends Events {
       }
 
       this.osc.start(time).stop(time + constants.BEEP_LENGTH)
+      this.emit('time', { time: this.currentTime })
 
       // advance current time
       this.currentTime++
@@ -149,8 +150,10 @@ class Metronome extends Events {
 
     if (this.playing) {
       this.Tone.Transport.stop()
+      this.emit('stop')
     } else {
       this.Tone.Transport.start()
+      this.emit('start')
     }
 
     this.playing = !this.playing
@@ -162,6 +165,7 @@ class Metronome extends Events {
     this.Tone.Transport.clear(this.eventId)
     this.#setScheduler()
     this.Tone.Transport.start()
+    this.emit('start')
     this.playing = true
   }
 

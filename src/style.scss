@@ -2,30 +2,34 @@
 $primary-color: #e5e5e5;
 $secondary-color: #f0f0f0;
 $background-color: #f0f0f0;
+$secondary-background-color: #fff;
 $text-color: #333;
 $shadow-first-color: #ccc;
 $shadow-second-color: #fff;
 
 // light theme
-$primary-color-light: #f6f1ef;
+$primary-color-light: #ffded1;
 $secondary-color-light: #fffaf8;
 $background-color-light: #fffaf8;
+$secondary-background-color-light: #fff;
 $text-color-light: #333;
 $shadow-first-color-light: #ccc;
 $shadow-second-color-light: #fff;
 
 // dark theme
-$primary-color-dark: #888;
+$primary-color-dark: #868686;
 $secondary-color-dark: #353535;
 $background-color-dark: #424242;
+$secondary-background-color-dark: #353535;
 $text-color-dark: #fff;
 $shadow-first-color-dark: #393939;
 $shadow-second-color-dark: #595959;
 
 // wave theme
-$primary-color-wave: #ebf0f2;
+$primary-color-wave: #c9effe;
 $secondary-color-wave: #f4f9fb;
 $background-color-wave: #f4f9fb;
+$secondary-background-color-wave: #fff;
 $text-color-wave: #333;
 $shadow-first-color-wave: #ccc;
 $shadow-second-color-wave: #fff;
@@ -93,7 +97,7 @@ $shadow-second-color-wave: #fff;
         
         .metronome-counters__tile {
           cursor: pointer;
-          background-color: $secondary-color;
+          background-color: $secondary-background-color;
           display: table-cell;
           margin: 4px;
           border-radius: 2px;
@@ -103,6 +107,10 @@ $shadow-second-color-wave: #fff;
 
           &.metronome-counters__tile--checked {
             background-color: $primary-color;
+          }
+
+          &.metronome-counters__col--highlighted {
+            filter: saturate(4) brightness(0.95);
           }
         }
       }
@@ -217,6 +225,12 @@ $shadow-second-color-wave: #fff;
             fill: $text-color;
             margin-left: 12px;
             margin-top: 4px;
+            width: 30px;
+            height: 30px;
+
+            .metronome-play__icon-path.metronome-play__icon-path--pause {
+              display: none;
+            }
           }
         }
 
@@ -283,6 +297,19 @@ $shadow-second-color-wave: #fff;
     }
   }
 
+  &.playing {
+    .metronome-container .metronome-controllers-background .metronome-controllers .metronome-play .metronome-play__icon {
+      margin-left: 10px;
+      margin-top: 10px;
+      .metronome-play__icon-path {
+        display: none;
+        &.metronome-play__icon-path--pause {
+          display: block;
+        }
+      }
+    }
+  }
+
   &.theme-light {
     background-color: $background-color-light;
     color: $text-color-light;
@@ -299,7 +326,7 @@ $shadow-second-color-wave: #fff;
     .metronome-container {
       .metronome-counters {
         .metronome-counters__tile {
-          background-color: $secondary-color-light;
+          background-color: $secondary-background-color-light;
           box-shadow: 3px 3px 5px $shadow-first-color-light, -3px -3px 5px $shadow-second-color-light;
           &.metronome-counters__tile--checked {
             background-color: $primary-color-light;
@@ -372,10 +399,14 @@ $shadow-second-color-wave: #fff;
     .metronome-container {
       .metronome-counters {
         .metronome-counters__tile {
-          background-color: $secondary-color-dark;
+          background-color: $secondary-background-color-dark;
           box-shadow: 3px 3px 5px $shadow-first-color-dark, -3px -3px 5px $shadow-second-color-dark;
           &.metronome-counters__tile--checked {
             background-color: $primary-color-dark;
+          }
+
+          &.metronome-counters__col--highlighted {
+            filter: brightness(1.4);
           }
         }
       }
@@ -450,7 +481,7 @@ $shadow-second-color-wave: #fff;
     .metronome-container {
       .metronome-counters {
         .metronome-counters__tile {
-          background-color: $secondary-color-wave;
+          background-color: $secondary-background-color-wave;
           box-shadow: 3px 3px 5px $shadow-first-color-wave, -3px -3px 5px $shadow-second-color-wave;
           &.metronome-counters__tile--checked {
             background-color: $primary-color-wave;
