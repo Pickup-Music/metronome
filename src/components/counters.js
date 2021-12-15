@@ -73,7 +73,7 @@ class Counters extends BaseComponent {
         const currentTime = this.currentTime
         rowEl.querySelectorAll('.metronome-counters__tile').forEach((colEl, i) => {
           if (i == currentTime) {
-            colEl.classList.add('metronome-counters__col--highlighted')
+            colEl.classList.add('metronome-counters__tile--highlighted')
           }
         })
       })
@@ -81,8 +81,8 @@ class Counters extends BaseComponent {
   }
 
   clearTime() {
-    this.el.querySelectorAll('.metronome-counters__col--highlighted').forEach((colEl) => {
-      colEl.classList.remove('metronome-counters__col--highlighted')
+    this.el.querySelectorAll('.metronome-counters__tile--highlighted').forEach((colEl) => {
+      colEl.classList.remove('metronome-counters__tile--highlighted')
     })
   }
 }

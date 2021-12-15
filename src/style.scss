@@ -113,7 +113,8 @@ $mobile: 767px;
             background-color: $primary-color;
           }
 
-          &.metronome-counters__col--highlighted {
+          &.metronome-counters__tile--highlighted {
+            padding: 0;
             filter: saturate(4) brightness(0.95);
           }
         }
@@ -419,7 +420,7 @@ $mobile: 767px;
             background-color: $primary-color-dark;
           }
 
-          &.metronome-counters__col--highlighted {
+          &.metronome-counters__tile--highlighted {
             filter: brightness(1.4);
           }
         }
