@@ -33,6 +33,22 @@ class Button extends BaseComponent {
       e.preventDefault();
       this.endPressing(e)
     })
+
+    this.el.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      this.startPressing(e)
+    })
+
+    this.el.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      this.endPressing(e)
+      this.onClick(e)
+    })
+
+    this.el.addEventListener('touchcancel', (e) => {
+      e.preventDefault();
+      this.endPressing(e)
+    })
   }
 
   startPressing(e) {

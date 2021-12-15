@@ -34,6 +34,9 @@ $text-color-wave: #333;
 $shadow-first-color-wave: #ccc;
 $shadow-second-color-wave: #fff;
 
+// breakpoints
+$mobile: 767px;
+
 .metronome-root {
   display: block;
   position: relative;
@@ -307,6 +310,11 @@ $shadow-second-color-wave: #fff;
         }
       }
     }
+  }
+
+  @media screen and (max-width: $mobile) {
+      max-width: 100%;
+      max-height: 100%;
   }
 
   &.theme-light {

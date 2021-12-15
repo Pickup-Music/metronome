@@ -28,10 +28,7 @@ class Metronome extends Events {
   }
 
   #updateTempo(tempo) {
-    this.#init()
-
     this.tempo = Math.max(Math.min(tempo, constants.MAX_TEMPO), constants.MIN_TEMPO)
-    this.Tone.Transport.bpm.value = this.tempo
 
     this.emit('tempo', { tempo: this.tempo })
   }
@@ -84,6 +81,11 @@ class Metronome extends Events {
     this.osc.volume.value = 0
     this.currentTime = 0
     this.eventId = this.Tone.Transport.scheduleRepeat((time) => {
+      
+      if (this.Tone.Transport.bpm.value !== this.tempo) {
+        this.Tone.Transport.bpm.value = this.tempo
+      }
+
       if (this.counters[this.currentTime] === 3) {
         this.osc.volume.setValueAtTime(0, time)
         this.osc.frequency.setValueAtTime(880, time)
@@ -148,12 +150,14 @@ class Metronome extends Events {
     if (this.playing) {
       this.Tone.Transport.stop()
       this.emit('stop')
+      this.playing = false
     } else {
-      this.Tone.Transport.start()
-      this.emit('start')
+      setTimeout(() => {
+        this.Tone.Transport.start()
+        this.emit('start')
+        this.playing = true
+      }, 100)
     }
-
-    this.playing = !this.playing
   }
 
   restart() {
