@@ -355,7 +355,7 @@ $mobile: 767px;
   &.metronome-loading-state {
     .metronome-header {
       .metronome-theme {
-        display: hidden;
+        visibility: hidden;
       }
     }
     .metronome-container {
