@@ -1,6 +1,6 @@
 {
   "name": "@pickupmusic/metronome",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Pickup Music - Metronome tool used to practice",
   "main": "dist/metronome.bundle.js",
   "module": "src/index.js",
