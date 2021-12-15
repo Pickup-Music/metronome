@@ -7,8 +7,6 @@ class ThemeButton extends Button {
     super(options)
     this.currentTheme = 0 //default
     this.metronomeRootEl = document.querySelector(".metronome-root")
-    // set initial theme class
-    this.metronomeRootEl.classList.add(`theme-${themes[this.currentTheme]}`)
   }
 
   onClick(e) {

@@ -4,7 +4,7 @@ import "../style.scss";
 
 export default {
   main: `
-  <div class="metronome-root">
+  <div class="metronome-root theme-light">
     <div class="metronome-header">
       <img src="${resources.logo}" class="metronome-header__logo" />
       <img src="${resources.logoDark}" class="metronome-header__logo metronome-header__logo--dark" />
@@ -61,7 +61,7 @@ export default {
             <select class="metronome-time-signature__num" data-num="0">
               ${[...Array(12).keys()].map((i) => `<option value="${i+1}"${i+1 === constants.TIME_SIGN_DEFAULT_FIRST ? ' selected' : ''}>${i+1}</option>`).join("") }
             </select>
-            /
+            <div class="metronome-time-signature__num-divider"><span>|</span></div>
             <select class="metronome-time-signature__num" data-num="1">
               ${[...Array(4).keys()].map((i) => `<option value="${i+1}"${i+1 === constants.TIME_SIGN_DEFAULT_SECOND ? ' selected' : ''}>${i+1}</option>`).join("") }
             </select>
