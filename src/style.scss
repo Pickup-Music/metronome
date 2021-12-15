@@ -39,6 +39,7 @@ $mobile: 767px;
 
 .metronome-root {
   display: block;
+  box-sizing: content-box;
   position: relative;
   flex-flow: column;
   background-color: $background-color;
