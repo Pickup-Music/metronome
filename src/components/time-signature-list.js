@@ -6,7 +6,9 @@ class TimeSignatureList extends List {
   }
 
   onChange(e) {
-    this.metronome.setTimeSignatureNum(parseInt(this.el.dataset.num), this.value)
+    if (this.el.dataset.num) {
+      this.metronome.setTimeSignatureNum(parseInt(this.el.dataset.num), this.value)
+    }
   }
 }
 

@@ -161,6 +161,7 @@ $shadow-second-color-wave: #fff;
         }
       }
     }
+
     .metronome-controllers-background {
       padding: 10% 10% 5%;
 
@@ -267,12 +268,10 @@ $shadow-second-color-wave: #fff;
         padding: 4px;
         
         .metronome-subdivision__icon {
-          width: 20px;
-          height: 20px;
-          display: none;
+          fill: $text-color;
 
-          &:not(.metronome-subdivision__icon--dark) {
-            display: block;
+          &.metronome-subdivision__icon--disabled {
+            fill: $primary-color;
           }
         }
       }
@@ -363,6 +362,12 @@ $shadow-second-color-wave: #fff;
     .metronome-subdivisions {
       .metronome-subdivision {
         background-color: $secondary-color-light;
+        .metronome-subdivision__icon {
+          fill: $text-color-light;
+          &.metronome-subdivision__icon--disabled {
+            fill: $primary-color-light;
+          }
+        }
       }
     }
     .metronome-button {
@@ -446,11 +451,9 @@ $shadow-second-color-wave: #fff;
       .metronome-subdivision {
         background-color: $secondary-color-dark;
         .metronome-subdivision__icon {
-          &.metronome-subdivision__icon--dark {
-            display: block;
-          }
-          &:not(.metronome-subdivision__icon--dark) {
-            display: none;
+          fill: $text-color-dark;
+          &.metronome-subdivision__icon--disabled {
+            fill: $primary-color-dark;
           }
         }
       }
@@ -518,6 +521,12 @@ $shadow-second-color-wave: #fff;
     .metronome-subdivisions {
       .metronome-subdivision {
         background-color: $secondary-color-wave;
+        .metronome-subdivision__icon {
+          fill: $text-color-wave;
+          &.metronome-subdivision__icon--disabled {
+            fill: $primary-color-wave;
+          }
+        }
       }
     }
     .metronome-button {

@@ -9,11 +9,11 @@ class Metronome extends Events {
     this.playing = false
     this.tempo = constants.DEFAULT_TEMPO
     this.counters = null
-    this.subdivision = constants.DEFAULT_SUBDIVISION
     this.taps = []
     this.tapTimeout = null
     this.timeSignature = [constants.TIME_SIGN_DEFAULT_FIRST, constants.TIME_SIGN_DEFAULT_SECOND]
     
+    this.#updateSubdivision(constants.DEFAULT_SUBDIVISION)
     this.#updateCounters()
   }
 
@@ -40,7 +40,6 @@ class Metronome extends Events {
     this.subdivision = value
 
     this.emit('subdivision', { subdivision: this.subdivision })
-    this.restart()
   }
 
   #updateTimeSignatureNum(num, value) {
@@ -52,8 +51,6 @@ class Metronome extends Events {
     if (num === 0) {
       this.#updateCounters()
     }
-
-    this.restart()
   }
 
   #updateCounters(diffs) {
@@ -183,10 +180,12 @@ class Metronome extends Events {
 
   setSubdivision(value) {
     this.#updateSubdivision(value)
+    this.restart()
   }
 
   setTimeSignatureNum(num, value) {
     this.#updateTimeSignatureNum(num, value)
+    this.restart()
   }
 }
 
