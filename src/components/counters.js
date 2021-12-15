@@ -34,6 +34,8 @@ class Counters extends BaseComponent {
       this.playing = false
       this.clearTime()
     })
+
+    this.emit('counters-ready')
   }
 
   renderCounters() {

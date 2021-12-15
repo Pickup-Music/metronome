@@ -8,6 +8,7 @@ import BPM from '../bpm'
 import TimeSignatureList from '../time-signature-list'
 import TapButton from '../tap-button'
 import ThemeButton from '../theme-button'
+import MetronomeUI from '../metronome-ui'
 
 export default {
   '.metronome-counters': Counters,
@@ -19,5 +20,6 @@ export default {
   '.metronome-subdivision': SubDivisionButton,
   '.metronome-time-signature__num': TimeSignatureList,
   '.metronome-tap': TapButton,
-  '.metronome-theme': ThemeButton
+  '.metronome-theme': ThemeButton,
+  '.metronome-content': MetronomeUI
 }

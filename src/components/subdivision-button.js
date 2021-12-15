@@ -16,6 +16,8 @@ class SubDivisionButton extends Button {
         !iconEl.classList.contains('metronome-subdivision__icon--disabled') && iconEl.classList.add('metronome-subdivision__icon--disabled')
       }
     })
+
+    this.emit('subdivisions-ready')
   }
 
   onClick(e) {
