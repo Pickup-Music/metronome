@@ -4,7 +4,7 @@ import "../style.scss";
 
 export default {
   main: `
-  <div class="metronome-root metronome-loading-state theme-light">
+  <div class="metronome-root metronome-loading-state theme-light metronome-subdivisions-disabled">
     <div class="metronome-content">
       <div class="metronome-header">
         <img src="${resources.logo}" class="metronome-header__logo" />

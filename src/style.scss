@@ -53,6 +53,8 @@ $mobile: 767px;
   max-height: 800px;
 
   .metronome-content {
+    margin-bottom: 15%;
+    
     .metronome-header {
       width: 100%;
       display: flex;
@@ -369,6 +371,16 @@ $mobile: 767px;
   @media screen and (max-width: $mobile) {
       max-width: 100%;
       max-height: 100%;
+  }
+
+  &.metronome-subdivisions-disabled {
+    .metronome-content {
+      .metronome-container {
+        .metronome-subdivisions {
+          display: none;
+        }
+      }
+    }
   }
 
   &.theme-light {
